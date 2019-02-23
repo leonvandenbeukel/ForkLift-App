@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tt="clr-namespace:TouchTracking"
+             xmlns:local="clr-namespace:BTRemote"             
+             x:Class="BTRemote.MainPage">
+
+
+
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            -->
+    <!--<RowDefinition Height="Auto" />-->
+    <!--
+        </Grid.RowDefinitions>
+
+        <Label x:Name="titleLabel"
+               Text="Remote"
+               Grid.Row="0"
+               Margin="0, 20"
+               FontSize="12"
+               FontAttributes="Italic"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />-->
+
+    <!--Grid.Row="1"-->
+
+    <!--HorizontalOptions="Center"
+    VerticalOptions="Center"-->
+
+    
+    
+    
+    <local:AspectRatioLayout x:Name="CanvasViewLayout" 
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="White" >
+
+        <local:AspectRatioLayout.Effects>
+            <tt:TouchEffect Capture="True" TouchAction="OnTouchEffectAction"></tt:TouchEffect>
+        </local:AspectRatioLayout.Effects>
+
+    </local:AspectRatioLayout>
+
+
+    <!--<local:AspectRatioLayout x:Name="CanvasViewLayout"
+                                 Grid.Row="1"           
+                                 BackgroundColor="White"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+
+            -->
+    <!-- SKCanvasView or SKGLView created in code-behind file -->
+    <!--
+            <local:AspectRatioLayout.Effects>
+                <tt:TouchEffect Capture="True"
+                                TouchAction="OnTouchEffectAction" />
+            </local:AspectRatioLayout.Effects>
+        </local:AspectRatioLayout>-->
+
+
+    <!--<Button Text="bla" Grid.Row="2" />-->
+
+    <!--</Grid>-->
+</ContentPage>    
+
+
