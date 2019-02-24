@@ -16,7 +16,7 @@ namespace BTRemote
             BluetoothDevicesListView.ItemsSource = devices;
 
             if (devices.Count == 0)
-                LabelNoDevices.IsVisible = true;
+                LabelInfo.Text = "No (bonded) Bluetooth devices found!";
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

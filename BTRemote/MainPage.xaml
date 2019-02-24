@@ -4,19 +4,6 @@
              xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="BTRemote.MainPage" >
 
-    <!--<ContentPage.Content>
-        <StackLayout>
-            <forms:SKCanvasView x:Name="canvasView"
-                                VerticalOptions="FillAndExpand"
-                                EnableTouchEvents="True" 
-                                Touch="CanvasView_OnTouch"
-                                PaintSurface="CanvasView_OnPaintSurface" />
-
-            <Label x:Name="lblMessage" Text="-" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-    </ContentPage.Content>-->
-
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -28,10 +15,6 @@
             <RowDefinition Height="18"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <!--<Label Text="A"
-               Grid.Row="0"
-               Grid.Column="0" />-->
-
         <StackLayout Grid.Row="0"
                      Grid.Column="0" 
                      HorizontalOptions="Center" >
@@ -42,15 +25,11 @@
 
         </StackLayout>
 
-
-        <!--<Stepper Minimum="0" Maximum="10" Increment="1"  />-->
-
-
         <Slider Minimum="0" Maximum="180"
                 Grid.Row="1"
                 Grid.Column="0" />
 
-        <forms:SKCanvasView x:Name="canvasView"
+        <forms:SKCanvasView x:Name="CanvasViewMove"
                             VerticalOptions="FillAndExpand"
                             EnableTouchEvents="True" 
                             Touch="CanvasView_OnTouch"
@@ -59,7 +38,7 @@
                             Grid.RowSpan="2"
                             PaintSurface="CanvasView_OnPaintSurface" />
 
-        <Label x:Name="lblMessage" 
+        <Label x:Name="MessageLabel" 
                Grid.Column="0"
                Grid.Row="2"
                Grid.ColumnSpan="2"
@@ -67,8 +46,5 @@
                HorizontalOptions="CenterAndExpand"/>
 
     </Grid>
-
-
-
 
 </ContentPage>

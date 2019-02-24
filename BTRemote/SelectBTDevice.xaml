@@ -5,7 +5,7 @@
     
     <StackLayout>
 
-        <Label Text="No (bonded) Bluetooth devices found!" IsVisible="False" x:Name="LabelNoDevices" />
+        <Label Text="Select bonded Bluetooth Device:" x:Name="LabelInfo" />
 
         <ListView x:Name="BluetoothDevicesListView"
             ItemsSource="{Binding Items}"

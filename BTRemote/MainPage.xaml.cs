@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using BTRemote.Model;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -17,7 +16,6 @@ namespace BTRemote
         private readonly Dictionary<long, TouchInfo> _idDictionary = new Dictionary<long, TouchInfo>();
         private float _canvasWidth = 0;
         private float _canvasHeight = 0;
-        private bool _xReset = true;
         private readonly int _timerDelay = 250;
         private int _liftPosition = 0;
 
@@ -54,26 +52,21 @@ namespace BTRemote
         {
             if (_idDictionary.Count > 0)
             {
-                _xReset = false;
                 var idPosInfo = _idDictionary[0];
-                lblMessage.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
+                MessageLabel.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
 
                 if (_bluetoothDeviceHelper != null && _bluetoothDeviceHelper.Connected && _canvasHeight > 0 && _canvasWidth > 0)
                 {
                     var percW = (100 * idPosInfo.Location.X) / _canvasWidth;
                     var percH = (100 * idPosInfo.Location.Y) / _canvasHeight;
                     var msg = $"{(int)percW},{(int)percH},{_liftPosition}|";
-                    
+
                     _bluetoothDeviceHelper.SendMessageAsync(msg);
                 }
             }
             else
             {
-               // if (!_xReset)
-                {
-                    _bluetoothDeviceHelper.SendMessageAsync($"50,50,{_liftPosition}|");
-                    _xReset = true;
-                }
+                _bluetoothDeviceHelper.SendMessageAsync($"50,50,{_liftPosition}|");
             }
 
             return true;
@@ -105,7 +98,7 @@ namespace BTRemote
                     if (_idDictionary.ContainsKey(args.Id))
                     {
                         _idDictionary.Remove(args.Id);
-                        lblMessage.Text = $"Removed {args.Id}";
+                        MessageLabel.Text = $"Removed {args.Id}";
                     }
                     break;
                 case SKTouchAction.Exited:
@@ -113,8 +106,8 @@ namespace BTRemote
             }
 
             args.Handled = true;
-            canvasView.InvalidateSurface();
-           // Message2BluetoothDevice();
+            CanvasViewMove.InvalidateSurface();
+            // Message2BluetoothDevice();
         }
 
         //async void Message2BluetoothDevice()
@@ -126,7 +119,7 @@ namespace BTRemote
         void UpdateLabel(long id)
         {
             var idPosInfo = _idDictionary[id];
-            lblMessage.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
+            MessageLabel.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
         }
 
         private bool Connected => _bluetoothDeviceHelper != null && _bluetoothDeviceHelper.Connected;
