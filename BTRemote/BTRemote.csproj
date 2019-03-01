@@ -11,11 +11,8 @@
 
   <ItemGroup>
     <Compile Remove="Archive\**" />
-    <Compile Remove="Touch\**" />
     <EmbeddedResource Remove="Archive\**" />
-    <EmbeddedResource Remove="Touch\**" />
     <None Remove="Archive\**" />
-    <None Remove="Touch\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +39,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SelectBtDevice.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\UpDownLift.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

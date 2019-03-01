@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BTRemote.Model;
+using BTRemote.Touch;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
@@ -14,15 +15,11 @@ namespace BTRemote
         private readonly BluetoothDevice _btDevice;
         private readonly IBluetoothDeviceHelper _bluetoothDeviceHelper;
         private readonly Dictionary<long, TouchInfo> _idDictionary = new Dictionary<long, TouchInfo>();
-        private float _canvasWidth = 0;
-        private float _canvasHeight = 0;
+        private float _canvasWidth;
+        private float _canvasHeight;
         private readonly int _timerDelay = 250;
-        private int _liftPosition = 0;
-
-        class TouchInfo
-        {
-            public SKPoint Location { get; set; }
-        }
+        //private int _liftPosition = 0;
+        private int _liftVerticalPosition = 0;
 
         public MainPage(BluetoothDevice btDevice)
         {
@@ -36,7 +33,7 @@ namespace BTRemote
             }
             else
             {
-                LabelBluetoothStatus.Text = "No Bluetooth device found.";
+                MessageLabel.Text = "No Bluetooth device found.";
             }
 
             Device.StartTimer(TimeSpan.FromMilliseconds(_timerDelay), OnTimerTick);
@@ -45,7 +42,7 @@ namespace BTRemote
         async void Connect2BluetoothDevice()
         {
             var connected = await _bluetoothDeviceHelper.Connect(_btDevice.Address);
-            LabelBluetoothStatus.Text = connected ? $"Connected to {_btDevice.Name}" : $"Cannot connect to {_btDevice.Name}!";
+            MessageLabel.Text = connected ? $"Connected to {_btDevice.Name}" : $"Cannot connect to {_btDevice.Name}!";
         }
 
         private bool OnTimerTick()
@@ -53,20 +50,22 @@ namespace BTRemote
             if (_idDictionary.Count > 0)
             {
                 var idPosInfo = _idDictionary[0];
-                MessageLabel.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
+                //MessageLabel.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
 
                 if (_bluetoothDeviceHelper != null && _bluetoothDeviceHelper.Connected && _canvasHeight > 0 && _canvasWidth > 0)
                 {
                     var percW = (100 * idPosInfo.Location.X) / _canvasWidth;
                     var percH = (100 * idPosInfo.Location.Y) / _canvasHeight;
-                    var msg = $"{(int)percW},{(int)percH},{_liftPosition}|";
+                    //var msg = $"{(int)percW},{(int)percH},{_liftPosition},{_liftVerticalPosition}|";
+                    var msg = $"{(int)percW},{(int)percH},{UpDownLift.Value},{_liftVerticalPosition}|";
 
                     _bluetoothDeviceHelper.SendMessageAsync(msg);
                 }
             }
-            else
+            else if (_bluetoothDeviceHelper != null && _bluetoothDeviceHelper.Connected)
             {
-                _bluetoothDeviceHelper.SendMessageAsync($"50,50,{_liftPosition}|");
+                //_bluetoothDeviceHelper.SendMessageAsync($"50,50,{_liftPosition},{_liftVerticalPosition}|");
+                _bluetoothDeviceHelper.SendMessageAsync($"50,50,{UpDownLift.Value},{_liftVerticalPosition}|");
             }
 
             return true;
@@ -98,7 +97,7 @@ namespace BTRemote
                     if (_idDictionary.ContainsKey(args.Id))
                     {
                         _idDictionary.Remove(args.Id);
-                        MessageLabel.Text = $"Removed {args.Id}";
+                        //MessageLabel.Text = $"Removed {args.Id}";
                     }
                     break;
                 case SKTouchAction.Exited:
@@ -119,7 +118,7 @@ namespace BTRemote
         void UpdateLabel(long id)
         {
             var idPosInfo = _idDictionary[id];
-            MessageLabel.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
+            //MessageLabel.Text = $"Last: {idPosInfo.Location.X}, {idPosInfo.Location.Y}";
         }
 
         private bool Connected => _bluetoothDeviceHelper != null && _bluetoothDeviceHelper.Connected;
@@ -180,24 +179,29 @@ namespace BTRemote
             }
         }
 
-        private void ButtonUp_OnPressed(object sender, EventArgs e)
-        {
-            _liftPosition = 1;
-        }
+        //private void ButtonUp_OnPressed(object sender, EventArgs e)
+        //{
+        //    _liftPosition = 1;
+        //}
 
-        private void ButtonUp_OnReleased(object sender, EventArgs e)
-        {
-            _liftPosition = 0;
-        }
+        //private void ButtonUp_OnReleased(object sender, EventArgs e)
+        //{
+        //    _liftPosition = 0;
+        //}
 
-        private void ButtonDown_OnPressed(object sender, EventArgs e)
-        {
-            _liftPosition = -1;
-        }
+        //private void ButtonDown_OnPressed(object sender, EventArgs e)
+        //{
+        //    _liftPosition = -1;
+        //}
 
-        private void ButtonDown_OnReleased(object sender, EventArgs e)
+        //private void ButtonDown_OnReleased(object sender, EventArgs e)
+        //{
+        //    _liftPosition = 0;
+        //}
+
+        private void Slider_OnValueChanged(object sender, ValueChangedEventArgs e)
         {
-            _liftPosition = 0;
+            _liftVerticalPosition = (int)e.NewValue;
         }
     }
 }

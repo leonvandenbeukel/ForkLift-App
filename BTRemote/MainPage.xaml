@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:view="clr-namespace:BTRemote.View;assembly=BTRemote"
              x:Class="BTRemote.MainPage" >
 
     <Grid>
@@ -11,7 +12,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
             <RowDefinition Height="18"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -19,15 +20,20 @@
                      Grid.Column="0" 
                      HorizontalOptions="Center" >
 
-            <Label Text="Connecting..." x:Name="LabelBluetoothStatus"></Label>
-            <Button Text="+" Pressed="ButtonUp_OnPressed" Released="ButtonUp_OnReleased" />
-            <Button Text="-" Pressed="ButtonDown_OnPressed" Released="ButtonDown_OnReleased" />
+            <!--<Label Text="Connecting..." x:Name="LabelBluetoothStatus"></Label>-->
+            <!--<Button Text="+" Pressed="ButtonUp_OnPressed" Released="ButtonUp_OnReleased" />
+            <Button Text="-" Pressed="ButtonDown_OnPressed" Released="ButtonDown_OnReleased" />-->
+
+            <view:UpDownLift x:Name="UpDownLift" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" WidthRequest="100">
+
+            </view:UpDownLift>
+
 
         </StackLayout>
 
-        <Slider Minimum="0" Maximum="180"
+        <Slider Minimum="0" Maximum="100" Value="100"
                 Grid.Row="1"
-                Grid.Column="0" />
+                Grid.Column="0"  ValueChanged="Slider_OnValueChanged" />
 
         <forms:SKCanvasView x:Name="CanvasViewMove"
                             VerticalOptions="FillAndExpand"
