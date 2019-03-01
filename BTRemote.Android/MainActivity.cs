@@ -15,9 +15,6 @@ namespace BTRemote.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            //this.Window.AddFlags(WindowManagerFlags.Fullscreen);
-            //this.Window.ClearFlags(WindowManagerFlags.Fullscreen);
-
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

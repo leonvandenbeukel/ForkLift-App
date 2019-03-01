@@ -5,14 +5,11 @@
              x:Class="BTRemote.View.UpDownLift">
   <ContentView.Content>
       <StackLayout>
-          <!--<Label x:Name="msg"></Label>-->
-
             <forms:SKCanvasView x:Name="CanvasViewUpDown"
                                 VerticalOptions="FillAndExpand"
                                 EnableTouchEvents="True" 
                                 Touch="CanvasView_OnTouch"
                                 PaintSurface="CanvasView_OnPaintSurface" />
-
         </StackLayout>
   </ContentView.Content>
 </ContentView>

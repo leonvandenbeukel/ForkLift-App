@@ -20,14 +20,8 @@
                      Grid.Column="0" 
                      HorizontalOptions="Center" >
 
-            <!--<Label Text="Connecting..." x:Name="LabelBluetoothStatus"></Label>-->
-            <!--<Button Text="+" Pressed="ButtonUp_OnPressed" Released="ButtonUp_OnReleased" />
-            <Button Text="-" Pressed="ButtonDown_OnPressed" Released="ButtonDown_OnReleased" />-->
-
             <view:UpDownLift x:Name="UpDownLift" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" WidthRequest="100">
-
             </view:UpDownLift>
-
 
         </StackLayout>
 

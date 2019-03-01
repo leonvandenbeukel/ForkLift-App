@@ -37,9 +37,7 @@ namespace BTRemote.View
                 var idPosInfo = _idDictionary[0];
                 var y = idPosInfo.Location.Y;
                 var val = _canvasHeight / 2 - y;
-                Value = (int)((100 * val) / (_canvasHeight / 2));
-
-                //msg.Text = $"Above: {y}, value: {val}, Perc: {Value}";
+                Value = (int)(100 * val / (_canvasHeight / 2));
             }
             else
             {
