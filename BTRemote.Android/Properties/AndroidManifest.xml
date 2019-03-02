@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
 	<uses-permission android:name="android.permission.BLUETOOTH" />
 	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-	<application android:label="BTRemote"></application>
+	<application android:label="BTRemote" android:icon="@drawable/web_hi_res_512"></application>
 </manifest>

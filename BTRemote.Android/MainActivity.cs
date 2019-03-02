@@ -1,12 +1,11 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Views;
 
 namespace BTRemote.Droid
 {
     [Activity(Label = "BTRemote",
-              Icon = "@mipmap/icon",
+              Icon = "@mipmap/ic_launcher",
               Theme = "@style/MainTheme",
               MainLauncher = true,
               ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
