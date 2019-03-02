@@ -19,6 +19,7 @@ namespace BTRemote
         private float _canvasHeight;
         private readonly int _timerDelay = 250;
         private int _liftVerticalPosition = 0;
+        private bool _lightOn = false;
 
         public MainPage(BluetoothDevice btDevice)
         {
@@ -55,14 +56,14 @@ namespace BTRemote
                 {
                     var percW = (100 * idPosInfo.Location.X) / _canvasWidth;
                     var percH = (100 * idPosInfo.Location.Y) / _canvasHeight;
-                    var msg = $"{(int)percW},{(int)percH},{UpDownLift.Value},{_liftVerticalPosition}|";
+                    var msg = $"{(int)percW},{(int)percH},{UpDownLift.Value},{_liftVerticalPosition},{(_lightOn ? 1:0)}|";
 
                     _bluetoothDeviceHelper.SendMessageAsync(msg);
                 }
             }
             else if (_bluetoothDeviceHelper != null && _bluetoothDeviceHelper.Connected)
             {
-                _bluetoothDeviceHelper.SendMessageAsync($"50,50,{UpDownLift.Value},{_liftVerticalPosition}|");
+                _bluetoothDeviceHelper.SendMessageAsync($"50,50,{UpDownLift.Value},{_liftVerticalPosition},{(_lightOn ? 1 : 0)}|");
             }
 
             return true;
@@ -149,6 +150,11 @@ namespace BTRemote
         private void Slider_OnValueChanged(object sender, ValueChangedEventArgs e)
         {
             _liftVerticalPosition = (int)e.NewValue;
+        }
+
+        private void LightSwitch_OnToggled(object sender, ToggledEventArgs e)
+        {
+            _lightOn = e.Value;
         }
     }
 }

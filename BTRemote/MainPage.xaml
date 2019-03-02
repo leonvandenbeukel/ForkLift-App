@@ -16,18 +16,22 @@
             <RowDefinition Height="18"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackLayout Grid.Row="0"
-                     Grid.Column="0" 
-                     HorizontalOptions="Center" >
-
+        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" >
             <view:UpDownLift x:Name="UpDownLift" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" WidthRequest="100">
             </view:UpDownLift>
-
         </StackLayout>
 
-        <Slider Minimum="0" Maximum="100" Value="100"
-                Grid.Row="1"
-                Grid.Column="0"  ValueChanged="Slider_OnValueChanged" />
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Slider Minimum="0" Maximum="100" Value="100" Grid.Row="0" Grid.Column="0"  ValueChanged="Slider_OnValueChanged" />
+            <Switch x:Name="LightSwitch" Grid.Row="0" Grid.Column="1" Toggled="LightSwitch_OnToggled" ></Switch>
+        </Grid>
 
         <forms:SKCanvasView x:Name="CanvasViewMove"
                             VerticalOptions="FillAndExpand"
