@@ -18,8 +18,8 @@ namespace BTRemote
         private float _canvasWidth;
         private float _canvasHeight;
         private readonly int _timerDelay = 250;
-        private int _liftVerticalPosition = 0;
-        private bool _lightOn = false;
+        private int _liftVerticalPosition;
+        private bool _lightOn;
 
         public MainPage(BluetoothDevice btDevice)
         {
