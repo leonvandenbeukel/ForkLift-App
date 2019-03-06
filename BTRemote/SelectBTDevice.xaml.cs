@@ -12,11 +12,19 @@ namespace BTRemote
             InitializeComponent();
 
             var bluetoothDeviceHelper = DependencyService.Get<IBluetoothDeviceHelper>();
-            var devices = bluetoothDeviceHelper.GetBondedDevices();
-            BluetoothDevicesListView.ItemsSource = devices;
 
-            if (devices.Count == 0)
-                LabelInfo.Text = "No (bonded) Bluetooth devices found!";
+            if (bluetoothDeviceHelper != null)
+            {
+                var devices = bluetoothDeviceHelper.GetBondedDevices();
+                BluetoothDevicesListView.ItemsSource = devices;
+
+                if (devices.Count == 0)
+                    LabelInfo.Text = "No (bonded) Bluetooth devices found!";
+            }
+            else
+            {
+                LabelInfo.Text = "Bluetooth is not available!";
+            }
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
