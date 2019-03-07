@@ -1,6 +1,6 @@
 ﻿using SkiaSharp;
 
-namespace BTRemote.Touch
+namespace BTRemote.Models
 {
     public class TouchInfo
     {

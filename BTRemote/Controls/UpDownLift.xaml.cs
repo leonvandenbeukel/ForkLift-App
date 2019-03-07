@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using BTRemote.Touch;
+using BTRemote.Models;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BTRemote.View
+namespace BTRemote.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpDownLift : ContentView

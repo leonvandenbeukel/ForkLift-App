@@ -1,8 +1,9 @@
-﻿using BTRemote.Model;
+﻿using BTRemote.Interfaces;
+using BTRemote.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BTRemote
+namespace BTRemote.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectBtDevice : ContentPage

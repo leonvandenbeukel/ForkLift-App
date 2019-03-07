@@ -1,4 +1,4 @@
-﻿namespace BTRemote.Model
+﻿namespace BTRemote.Models
 {
     public class BluetoothDevice
     {

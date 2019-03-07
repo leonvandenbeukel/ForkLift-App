@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using BTRemote.Model;
-using BTRemote.Touch;
+using BTRemote.Interfaces;
+using BTRemote.Models;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BTRemote
+namespace BTRemote.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage

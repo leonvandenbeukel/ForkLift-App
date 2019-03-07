@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Android.Bluetooth;
 using BTRemote.Droid;
+using BTRemote.Interfaces;
 using Java.Util;
 using Xamarin.Forms;
 using Application = Android.App.Application;
-using BluetoothDevice = BTRemote.Model.BluetoothDevice;
+using BluetoothDevice = BTRemote.Models.BluetoothDevice;
 using Log = Android.Util.Log;
 
 [assembly: Dependency(typeof(BluetoothDeviceHelper))]

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using BTRemote.Model;
+using BTRemote.Models;
 
-namespace BTRemote
+namespace BTRemote.Interfaces
 {
     public interface IBluetoothDeviceHelper
     {
